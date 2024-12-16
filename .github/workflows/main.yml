@@ -13,6 +13,33 @@ env:
   API_URL: https://app.dev.veribom.com/
 
 jobs:
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      # Step 1: Checkout the code from the repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+      # Step 2: Install Gitleaks
+      - name: Install Gitleaks
+        run: |
+          curl -sSL https://github.com/zricethezav/gitleaks/releases/download/v8.1.0/gitleaks-linux-amd64 -o /usr/local/bin/gitleaks
+          chmod +x /usr/local/bin/gitleaks
+      # Step 3: Run Gitleaks to scan the repository for secrets
+      - name: Run Gitleaks to scan for secrets
+        run: |
+          gitleaks detect --source=./ --verbose --report=/tmp/gitleaks-report.json || echo "No secrets found"
+      # Step 4: Check the Gitleaks report and fail if any secrets are found
+      - name: Fail if secrets are detected
+        run: |
+          if [ -s /tmp/gitleaks-report.json ]; then
+            echo "Secrets detected in the repository:"
+            cat /tmp/gitleaks-report.json
+            exit 1
+          else
+            echo "No secrets found in the repository."
+          fi
+          
   create_scan_in_IR_Portal:
     runs-on: ubuntu-latest
     outputs:

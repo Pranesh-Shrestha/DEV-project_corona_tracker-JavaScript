@@ -67,7 +67,7 @@ jobs:
         id: fetchECRDetails
         uses: fjogeleit/http-request-action@v1.15.1
         with:
-            url: '${{env.API_URL}}/utilityapi/v1/registry?api_key=${{secrets.VB_API_KEY}}'
+            url: '${{env.API_URL}}/utilityapi/v1/registry?api_key=zQ7luxGM0oZoJ4k_Lm-F0ppGmrj-PK38hssKZIB5py7O1XOWBEr0uoYKgWANMOxaDgkjXqi6lkdFEWCr9cwUpw'
             method: 'GET'
       - name: Decoding VB Token
         id: parseToken

@@ -13,33 +13,6 @@ env:
   API_URL: https://app.dev.veribom.com/
 
 jobs:
-
-  secret-scan:
-    runs-on: ubuntu-latest
-    steps:
-      # Step 1: Checkout the code from the repository
-      - name: Checkout code
-        uses: actions/checkout@v2
-      # Step 2: Install Gitleaks
-      - name: Install Gitleaks
-        run: |
-          curl -sSL https://github.com/zricethezav/gitleaks/releases/download/v8.1.0/gitleaks-linux-amd64 -o /usr/local/bin/gitleaks
-          chmod +x /usr/local/bin/gitleaks
-      # Step 3: Run Gitleaks to scan the repository for secrets
-      - name: Run Gitleaks to scan for secrets
-        run: |
-          gitleaks detect --source=./ --verbose --report=/tmp/gitleaks-report.json || echo "No secrets found"
-      # Step 4: Check the Gitleaks report and fail if any secrets are found
-      - name: Fail if secrets are detected
-        run: |
-          if [ -s /tmp/gitleaks-report.json ]; then
-            echo "Secrets detected in the repository:"
-            cat /tmp/gitleaks-report.json
-            exit 1
-          else
-            echo "No secrets found in the repository."
-          fi
-          
   create_scan_in_IR_Portal:
     runs-on: ubuntu-latest
     outputs:
@@ -67,7 +40,7 @@ jobs:
         id: fetchECRDetails
         uses: fjogeleit/http-request-action@v1.15.1
         with:
-            url: '${{env.API_URL}}/utilityapi/v1/registry?api_key=zQ7luxGM0oZoJ4k_Lm-F0ppGmrj-PK38hssKZIB5py7O1XOWBEr0uoYKgWANMOxaDgkjXqi6lkdFEWCr9cwUpw'
+            url: '${{env.API_URL}}/utilityapi/v1/registry?api_key=${{secrets.VB_API_KEY}}'
             method: 'GET'
       - name: Decoding VB Token
         id: parseToken

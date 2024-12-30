@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-       "react-dom": "^16.14.0"  
-  },
+    "react-dom": "^16.14.0"  
+  }
 }

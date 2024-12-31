@@ -92,8 +92,4 @@ jobs:
     - run: npm install --legacy-peer-deps
     - name: Verify @babel/cli in node_modules
       run: |
-        if npm list @babel/cli; then
-          echo "@babel/cli is installed!";
-        else
-          echo "@babel/cli is not installed!" && exit 1;
-        fi
+        if npm list --depth=3

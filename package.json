@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "tsds-web-test-runner": "1.12.19",
-    "vxe-table": "4.10.2",
-    "@pulumi/random": "4.16.8",
-    "cdk8s-cli": "2.198.292",
-    "@ionic/react-router": "8.4.1"
+    "@ionic/vue-router": "8.4.1",
+    "@ionic/angular": "8.4.1",
+    "@ionic/react": "8.4.1",
+    "@ionic/vue": "8.4.1",
+    "@ionic/core": "8.4.1"
   }
 }

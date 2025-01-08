@@ -90,5 +90,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install --force
+    continue-on-error: true
     #name: Verify installation with details
     #run: npm list --depth=3

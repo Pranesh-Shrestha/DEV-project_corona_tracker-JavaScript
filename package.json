@@ -48,14 +48,7 @@
     "http-cache-semantics": "4.0.3",
     "no-case": "2.3.1",
     "path-parse": "1.0.5",
-    "handlebars": "4.1.2",
-    "gitpython": "3.1.13",
-    "is-svg": "2.1.0",
-    "kind-of": "6.0.2",
-    "simple-get": "3.1.0",
-    "browserify-sign": "4.2.1",
-    "loader-utils": "2.0.2",
-    "serialize-javascript": "1.9.1"
+    "handlebars": "4.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

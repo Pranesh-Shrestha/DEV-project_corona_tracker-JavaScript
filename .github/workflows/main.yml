@@ -89,7 +89,6 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install --force
-    continue-on-error: true
-    #name: Verify installation with details
-    #run: npm list --depth=3
+    - name: Install dependencies
+      run: npm install --legacy-peer-deps --force
+      continue-on-error: true

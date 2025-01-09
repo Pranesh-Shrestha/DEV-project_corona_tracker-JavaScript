@@ -1,0 +1,31 @@
+name: Node.js Dependency Installation and Display
+
+on:
+  push:
+    branches:
+      - STAGE
+  pull_request:
+    branches:
+      - STAGE
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16' # Set your preferred Node.js version here
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: Display Installed Dependencies
+        run: |
+          echo "Installed dependencies and their transitive dependencies:"
+          npm ls --all --depth=10 # Adjust the depth for more or fewer dependencies

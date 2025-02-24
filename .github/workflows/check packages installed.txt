@@ -1,12 +1,7 @@
 name: Node.js Dependency Installation and Display
 
 on:
-  push:
-    branches:
-      - STAGE
-  pull_request:
-    branches:
-      - STAGE
+  workflow_dispatch:
 
 jobs:
   build:
